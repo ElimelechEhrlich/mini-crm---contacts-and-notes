@@ -12,6 +12,9 @@ const jsonBodyGuard = (req, res, next) => {
     else next()
 }
 
+const errorHandler = (req, res, next) => {
+}
+
 export {
     requestLogger,
     jsonBodyGuard
