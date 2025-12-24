@@ -1,10 +1,11 @@
 import express from "express"
+import { addContact, getContactById, getContacts } from "../controllers/contactsC.js"
 
 const router = express.Router()
 
-router.get("/", async (req, res) => {})
-router.get("/:id", async (req, res) => {})
-router.get("/:id/notes", async (req, res) => {})
+router.get("/", getContacts)
+router.get("/:id", getContactById)
+router.get("/:id/notes", addContact)
 router.post("/", async (req, res) => {})
 router.post("/:id/notes", async (req, res) => {})
 router.put("/:id", async (req, res) => {})
