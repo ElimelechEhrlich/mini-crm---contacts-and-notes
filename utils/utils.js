@@ -6,6 +6,14 @@ const requestLogger = (req, res, next) => {
     next()
 }
 
+const jsonBodyGuard = (req, res, next) => {
+    if ((req.method === "POST" || req.method === "PUT" || req.method === "PATCH") && !req.body) {
+        res.sentStatus(400)        
+    }
+    else next()
+}
+
 export {
-    requestLogger
+    requestLogger,
+    jsonBodyGuard
 }
