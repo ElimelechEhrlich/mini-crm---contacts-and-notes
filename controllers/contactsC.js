@@ -4,12 +4,14 @@ import { getData } from "../services/getData.js";
 console.log(await getData("./data/contacts.json"));
 
 const getContacts = async (req, res) => {
-    let contacts = await getData("./data/contacts.json")
     if (req.query) {
-        contacts = contacts.filter(contact => req.query === contact.name || req.query === contact.phone)
-    }
+        const contacts = contacts.filter(contact => req.query === contact.name || req.query === contact.phone)
+    };
+    else {
+        const contacts = await getData("./data/contacts.json")
+    };
     try {
-        res.json({ results: contacts })
+        res.json(contacts)
     } catch (err) {
         console.error(err);
         res.status(500).json({ err });
